@@ -1,0 +1,348 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Mode - Clean & Calm */
+    --background: 140 50% 98%;
+    --foreground: 160 20% 5%;
+    --card: 0 0% 100%;
+    --card-foreground: 160 20% 5%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 20% 5%;
+    --primary: 145 82% 23%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 142 71% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 140 30% 95%;
+    --muted-foreground: 160 10% 45%;
+    --accent: 142 76% 92%;
+    --accent-foreground: 145 82% 23%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 140 20% 88%;
+    --input: 140 20% 88%;
+    --ring: 145 82% 23%;
+    --radius: 1rem;
+    
+    /* Kwado Custom Colors - Light */
+    --kwado-bg: #F6FFF9;
+    --kwado-card: #FFFFFF;
+    --kwado-border: #DCEFE3;
+    --kwado-green: #0B6B3A;
+    --kwado-green-light: #22C55E;
+    --kwado-green-pale: #DCFCE7;
+    --kwado-text: #0B0F0E;
+    --kwado-text-muted: #5A7368;
+    --kwado-text-secondary: #9BB7A6;
+  }
+
+  .dark {
+    /* Dark Mode - Afrocentric Deep Green-Black (DEFAULT) */
+    --background: 160 25% 5%;
+    --foreground: 140 60% 95%;
+    --card: 160 20% 8%;
+    --card-foreground: 140 60% 95%;
+    --popover: 160 20% 8%;
+    --popover-foreground: 140 60% 95%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 160 15% 12%;
+    --secondary-foreground: 140 60% 95%;
+    --muted: 160 15% 12%;
+    --muted-foreground: 140 20% 55%;
+    --accent: 145 60% 12%;
+    --accent-foreground: 142 71% 45%;
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 160 15% 18%;
+    --input: 160 15% 18%;
+    --ring: 142 71% 45%;
+    
+    /* Kwado Custom Colors - Dark */
+    --kwado-bg: #0B0F0E;
+    --kwado-card: #111917;
+    --kwado-border: #1F2A26;
+    --kwado-green: #22C55E;
+    --kwado-green-light: #4ADE80;
+    --kwado-green-pale: #14532D;
+    --kwado-text: #EAFBF3;
+    --kwado-text-muted: #9BB7A6;
+    --kwado-text-secondary: #5A7368;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Premium Card Styles */
+  .kwado-card {
+    @apply rounded-2xl border bg-card text-card-foreground;
+    border-color: var(--kwado-border);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  }
+  
+  .dark .kwado-card {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Primary Button */
+  .kwado-btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-xl transition-all duration-200;
+    background-color: var(--kwado-green);
+    color: white;
+  }
+  
+  .kwado-btn-primary:hover {
+    filter: brightness(1.15);
+    transform: translateY(-1px);
+  }
+  
+  /* Secondary Button */
+  .kwado-btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-xl border transition-all duration-200;
+    background-color: transparent;
+    color: var(--kwado-text);
+    border-color: var(--kwado-border);
+  }
+  
+  .kwado-btn-secondary:hover {
+    background-color: var(--kwado-card);
+    border-color: var(--kwado-green);
+  }
+  
+  /* Ghost Button */
+  .kwado-btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2 font-medium rounded-lg transition-all duration-200;
+    color: var(--kwado-text-muted);
+  }
+  
+  .kwado-btn-ghost:hover {
+    color: var(--kwado-green);
+    background-color: var(--kwado-green-pale);
+  }
+  
+  /* Eyebrow Label */
+  .kwado-eyebrow {
+    @apply text-xs font-semibold tracking-[0.15em] uppercase;
+    color: var(--kwado-green);
+  }
+  
+  /* Section Styles */
+  .kwado-section {
+    @apply min-h-screen w-full flex items-center justify-center px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+  
+  /* Input Styles */
+  .kwado-input {
+    @apply w-full px-4 py-3 rounded-xl border bg-transparent transition-all duration-200;
+    border-color: var(--kwado-border);
+    color: var(--kwado-text);
+  }
+  
+  .kwado-input:focus {
+    outline: none;
+    border-color: var(--kwado-green);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+  }
+  
+  .kwado-input::placeholder {
+    color: var(--kwado-text-secondary);
+  }
+  
+  /* Quiz Answer States */
+  .quiz-option {
+    @apply w-full p-4 rounded-xl border text-left transition-all duration-200 cursor-pointer;
+    border-color: var(--kwado-border);
+    background-color: var(--kwado-card);
+    color: var(--kwado-text);
+  }
+  
+  .quiz-option:hover:not(.quiz-option-correct):not(.quiz-option-wrong):not(.quiz-option-disabled) {
+    border-color: var(--kwado-green);
+    background-color: rgba(34, 197, 94, 0.05);
+  }
+  
+  .quiz-option-correct {
+    border-color: #22C55E !important;
+    background-color: rgba(34, 197, 94, 0.15) !important;
+    color: #22C55E !important;
+  }
+  
+  .quiz-option-wrong {
+    border-color: #EF4444 !important;
+    background-color: rgba(239, 68, 68, 0.15) !important;
+    color: #EF4444 !important;
+  }
+  
+  .quiz-option-disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  /* Sidebar Styles */
+  .sidebar-collapsed {
+    width: 72px;
+  }
+  
+  .sidebar-expanded {
+    width: 260px;
+  }
+  
+  /* Progress Bar */
+  .kwado-progress {
+    @apply h-2 rounded-full overflow-hidden;
+    background-color: var(--kwado-border);
+  }
+  
+  .kwado-progress-bar {
+    @apply h-full rounded-full transition-all duration-500;
+    background-color: var(--kwado-green);
+  }
+  
+  /* Heatmap Colors */
+  .heatmap-strong {
+    background-color: #22C55E;
+  }
+  
+  .heatmap-average {
+    background-color: #EAB308;
+  }
+  
+  .heatmap-weak {
+    background-color: #EF4444;
+  }
+  
+  /* Notification Badge */
+  .notification-badge {
+    @apply absolute -top-1 -right-1 w-5 h-5 rounded-full text-xs font-medium flex items-center justify-center;
+    background-color: #EF4444;
+    color: white;
+  }
+  
+  /* Streak Badge */
+  .streak-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium;
+    background-color: rgba(234, 179, 8, 0.15);
+    color: #EAB308;
+  }
+  
+  /* Countdown Urgency */
+  .countdown-safe {
+    color: #22C55E;
+  }
+  
+  .countdown-warning {
+    color: #EAB308;
+  }
+  
+  .countdown-urgent {
+    color: #EF4444;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--kwado-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--kwado-green);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
